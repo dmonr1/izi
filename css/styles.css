@@ -3,57 +3,71 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
+  }
+  
+  html {
     scroll-behavior: smooth;
-}
-
-body {
+  }
+  
+  body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
-}
-
-/* ====== FONDO ====== */
-.back {
+    overflow: hidden;
+  }
+  
+  /* ====== FONDO ====== */
+  .back {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(#202020 0%, #111111 100%);
     position: relative;
-}
-
+  }
+  
+/* ====== TOOLBAR ====== */
 .toolbar-footer {
-    position: absolute;          
-    bottom: 20px;                
-    left: 50%;                   
-    transform: translateX(-50%); 
-    width: 50%;                  
-    background: rgba(30, 30, 30, 0.85);
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    padding: 14px 0;
-    z-index: 100;
-    border-radius: 50px;        
-}
-
-/* ====== CONTENEDOR DE ICONOS ====== */
-.toolbar-icons {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 40px;
+    padding: 12px 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .toolbar-icons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
-}
-
-/* ====== ICONOS ====== */
-.toolbar-item {
+    position: relative;
+  }
+  
+  .toolbar-item {
+    flex: 1;                
+    text-align: center;    
     color: #bbb;
-    font-size: 22px;
-    transition: all 0.3s ease;
+    font-size: 20px;
     text-decoration: none;
-}
-
-.toolbar-item:hover,
-.toolbar-item.active {
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .toolbar-item:hover {
     color: #fff;
-    transform: translateY(-6px) scale(1.15);
-}
+  }
+  
+/* ====== INDICADOR ====== */
+.indicator {
+    position: absolute;
+    bottom: -5px;
+    height: 4px;
+    width: 15%;
+    background: linear-gradient(90deg, #1db954, #1ed760);
+    border-radius: 4px;
+    transition: left 0.4s ease;
+    z-index: 1;
+  }
+  
