@@ -1,0 +1,59 @@
+/* ====== RESET ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+/* ====== FONDO ====== */
+.back {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#202020 0%, #111111 100%);
+    position: relative;
+}
+
+.toolbar-footer {
+    position: absolute;          
+    bottom: 20px;                
+    left: 50%;                   
+    transform: translateX(-50%); 
+    width: 50%;                  
+    background: rgba(30, 30, 30, 0.85);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 14px 0;
+    z-index: 100;
+    border-radius: 50px;        
+}
+
+/* ====== CONTENEDOR DE ICONOS ====== */
+.toolbar-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+/* ====== ICONOS ====== */
+.toolbar-item {
+    color: #bbb;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.toolbar-item:hover,
+.toolbar-item.active {
+    color: #fff;
+    transform: translateY(-6px) scale(1.15);
+}
