@@ -1,29 +1,26 @@
-/* ====== RESET ====== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html {
+}
+
+html {
     scroll-behavior: smooth;
-  }
-  
-  body {
+}
+
+body {
     font-family: 'Poppins', sans-serif;
     color: #fff;
     overflow: hidden;
-  }
-  
-  /* ====== FONDO ====== */
-  .back {
+}
+
+.back {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(#202020 0%, #111111 100%);
     position: relative;
-  }
-  
-/* ====== TOOLBAR ====== */
+}
+
 .toolbar-footer {
     position: fixed;
     bottom: 30px;
@@ -35,39 +32,166 @@
     border-radius: 40px;
     padding: 12px 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  }
-  
-  .toolbar-icons {
+}
+
+.toolbar-icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-  }
-  
-  .toolbar-item {
-    flex: 1;                
-    text-align: center;    
+}
+
+.toolbar-item {
+    flex: 1;
+    text-align: center;
     color: #bbb;
     font-size: 20px;
     text-decoration: none;
     transition: color 0.3s ease;
     position: relative;
     z-index: 2;
-  }
-  
-  .toolbar-item:hover {
+}
+
+.toolbar-item:hover {
     color: #fff;
-  }
-  
-/* ====== INDICADOR ====== */
+}
+
 .indicator {
     position: absolute;
     bottom: -5px;
     height: 4px;
-    width: 15%;
-    background: linear-gradient(90deg, #1db954, #1ed760);
+    width: 12%;
+    background: linear-gradient(90deg, #1d95b9, #1eacd7);
     border-radius: 4px;
     transition: left 0.4s ease;
     z-index: 1;
-  }
-  
+}
+
+.indicator::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 30px;
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0.219) 0%,
+            rgba(255, 255, 255, 0.151) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.toolbar-item.active~.indicator::before {
+    opacity: 1;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-120%) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(20%) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.search-bar {
+    position: absolute;
+    top: 60px;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 280px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-120%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(20%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+.search-bar.exit-left {
+    animation: slideOutLeft 0.4s ease forwards;
+    pointer-events: none;
+}
+
+.search-bar.exit-right {
+    animation: slideOutRight 0.4s ease forwards;
+    pointer-events: none;
+}
+
+.search-bar.active-left {
+    animation: slideInLeft 0.4s ease forwards;
+    pointer-events: auto;
+}
+
+.search-bar.active-right {
+    animation: slideInRight 0.4s ease forwards;
+    pointer-events: auto;
+}
+
+.search-bar:hover {
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.search-bar i {
+    color: #777;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
+    color: #333 !important;
+    font-family: 'Poppins', sans-serif;
+    background: transparent;
+}
