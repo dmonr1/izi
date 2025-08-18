@@ -11,26 +11,39 @@
 </head>
 
 <body>
-    
     <section class="back">
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Realice su búsqueda">
-          </div>
-          
-        <div class="toolbar-footer">
+        </div>
+    
+        <div class="panels">
+            <div class="panel panel-home show">Bienvenido a Home</div>
+            <div class="panel panel-search"> 
+                <ul>
+                    asd
+                </ul>
+            </div>
+            <div class="panel panel-music">
+                <img src="../images/coqueta.png" alt="Coqueta">
+            </div>            
+            <div class="panel panel-notifications">Tienes notificaciones</div>
+            <div class="panel panel-profile">Perfil del usuario</div>
+        </div>
+
+        <div class="toolbar-footer">    
             <div class="toolbar-icons">
-                <a href="#" class="toolbar-item active"><i class="fas fa-home"></i></a>
-                <a href="#" class="toolbar-item"><i class="fas fa-search"></i></a>
-                <a href="#" class="toolbar-item"><i class="fas fa-plus-circle"></i></a>
-                <a href="#" class="toolbar-item"><i class="fas fa-bell"></i></a>
-                <a href="#" class="toolbar-item"><i class="fas fa-user"></i></a>
+                <a href="#" class="toolbar-item active" data-panel="panel-home"><i class="fas fa-home"></i></a>
+                <a href="#" class="toolbar-item" data-panel="panel-search"><i class="fas fa-search"></i></a>
+                <a href="#" class="toolbar-item" data-panel="panel-music"><i class="fa-solid fa-headphones"></i></a>
+                <a href="#" class="toolbar-item" data-panel="panel-notifications"><i class="fas fa-bell"></i></a>
+                <a href="#" class="toolbar-item" data-panel="panel-profile"><i class="fas fa-user"></i></a>                
                 <span class="indicator"></span>
             </div>
         </div>
-        </div>
     </section>
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-    <script src="../js/main.js"></script>
+    
+    <script src="../js/main.js"></script>   
 </body>
+
 </html>

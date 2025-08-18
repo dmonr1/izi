@@ -1,50 +1,54 @@
-const items = document.querySelectorAll('.toolbar-item');
-const indicator = document.querySelector('.indicator');
-const searchBar = document.querySelector('.search-bar');
+const items = document.querySelectorAll(".toolbar-item");
+const indicator = document.querySelector(".indicator");
+const searchBar = document.querySelector(".search-bar");
+const panels = document.querySelectorAll(".panel");
 
-let lastIndex = 0; 
+let lastIndex = 0;
 
-function moveIndicator(element) {
-  const itemWidth = element.offsetWidth;
-  const itemLeft = element.offsetLeft;
-  const indicatorWidth = indicator.offsetWidth;
-
-  const left = itemLeft + (itemWidth / 2) - (indicatorWidth / 2);
-  indicator.style.left = `${left}px`;
+function moveIndicator(element){
+    const left = element.offsetLeft + element.offsetWidth/2 - indicator.offsetWidth/2;
+    indicator.style.left = `${left}px`;
 }
 
-moveIndicator(items[0]);
+function showPanel(panelClass){
+    panels.forEach(panel=>{
+        panel.classList.remove("show");
+    });
+    const panel = document.querySelector(`.${panelClass}`);
+    if(panel) panel.classList.add("show");
+}
 
-items.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    moveIndicator(item);
+items.forEach((item,index)=>{
+    item.addEventListener("click",()=>{
+        // Mover indicador
+        moveIndicator(item);
 
-    searchBar.classList.remove("active-left", "active-right", "exit-left", "exit-right");
+        // Activar/Desactivar search bar
+        searchBar.classList.remove("active-left","active-right","exit-left","exit-right");
+        const panelName = item.dataset.panel;
+        const comingFromLeft = lastIndex < index;
 
-    const isSearch = item.querySelector("i").classList.contains("fa-search");
-    const wasSearch = items[lastIndex].querySelector("i").classList.contains("fa-search");
+        if(panelName === "panel-search"){
+            searchBar.classList.add(comingFromLeft ? "active-left":"active-right");
+        } else if(searchBar.offsetParent !== null){
+            searchBar.classList.add(comingFromLeft ? "exit-left":"exit-right");
+        }
 
-    if (isSearch) {
-      if (lastIndex < index) {
-        searchBar.classList.add("active-left"); 
-      } else {
-        searchBar.classList.add("active-right"); 
-      }
-    } else if (wasSearch) {
-      if (index > lastIndex) {
-        searchBar.classList.add("exit-left"); 
-      } else {
-        searchBar.classList.add("exit-right"); 
-      }
-    }
+        // Mostrar el panel correspondiente
+        showPanel(panelName);
 
-    lastIndex = index;
-  });
+        // Actualizar lastIndex
+        lastIndex = index;
+    });
 });
 
+// Inicial
+moveIndicator(items[0]);
+showPanel("panel-home");
+
 window.addEventListener("resize", () => {
-  const activeItem = document.querySelector(".toolbar-item.active");
-  if (activeItem) {
-    moveIndicator(activeItem);
-  }
+    const activeItem = document.querySelector(".toolbar-item.active");
+    if (activeItem) {
+        moveIndicator(activeItem);
+    }
 });
