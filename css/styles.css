@@ -180,7 +180,6 @@ body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
 }
 
-
 .search-bar i {
     color: #777;
     font-size: 16px;
@@ -204,11 +203,9 @@ body {
     transform: translateX(-50%);
     width: 25%;
     height: calc(100vh - 250px);
-    /* resta toolbar + header + margen */
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    /* para que el contenido arranque arriba */
 }
 
 .panel {
@@ -233,7 +230,6 @@ body {
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
-
 
 .panel.show {
     display: block;
@@ -515,4 +511,3 @@ body {
 .now-playing-card.hidden {
     display: none;
 }
-
