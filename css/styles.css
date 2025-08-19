@@ -26,7 +26,7 @@ body {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    width: 25%;
+    width: 24%;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
     border-radius: 40px;
@@ -76,8 +76,8 @@ body {
     width: 120%;
     height: 30px;
     background: linear-gradient(to top,
-            rgba(255, 255, 255, 0.219) 0%,
-            rgba(255, 255, 255, 0.151) 50%,
+            rgba(255, 255, 255, 0.062) 0%,
+            rgba(255, 255, 255, 0.075) 50%,
             rgba(255, 255, 255, 0) 100%);
     border-radius: 50%;
     filter: blur(10px);
@@ -162,7 +162,7 @@ body {
 .search-bar {
     position: absolute;
     top: 60px;
-    left: 51%;
+    left: 50%;
     transform: translateX(-50%);
     width: 280px;
     display: flex;
@@ -170,7 +170,7 @@ body {
     padding: 10px 15px;
     background: #ffffff;
     border-radius: 50px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     opacity: 0;
     pointer-events: none;
     transition: box-shadow 0.3s ease;
@@ -199,20 +199,22 @@ body {
 
 .panels {
     position: absolute;
-    top: 140px;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30%; /* ancho fijo */
-    height: 55%; /* alto en porcentaje del contenedor */
+    width: 25%;
+    height: calc(100vh - 250px);
+    /* resta toolbar + header + margen */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    /* para que el contenido arranque arriba */
 }
 
 .panel {
     display: none;
-    width: 100%; 
-    height: 100%; /* ocupar todo el alto del contenedor panels */
+    width: 100%;
+    height: 100%;
     text-align: center;
     color: #fff;
     font-family: 'Poppins', sans-serif;
@@ -220,9 +222,18 @@ body {
     opacity: 0;
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
 }
+
+.panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
 
 .panel.show {
     display: block;
@@ -230,31 +241,278 @@ body {
 }
 
 .panel-home {
+    /*background: linear-gradient(135deg, rgba(29,149,185,0.3), rgba(0,50,100,0.3)); */
     background: transparent;
 }
 
 .panel-search {
-    background: linear-gradient(135deg, rgba(50,50,50,0.3), rgba(80,80,80,0.3));
+    background: transparent;
+    width: 100%;
+    height: 80.7%;
+    overflow-y: auto;
+    padding: 0px 15px;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.panel-search::-webkit-scrollbar {
+    display: none;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 11.5px 15px 11.5px 10px;
+    transition: opacity 0.4s ease, transform 0.4s ease,
+        max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+    opacity: 1;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.song-card.removing {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-search.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-card:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.song-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.song-info {
+    flex: 1;
+    text-align: left;
+}
+
+.song-info h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+}
+
+.song-info p {
+    font-size: 13px;
+    margin: 2px 0 0;
+    color: #ccc;
+}
+
+.close-icon {
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: color 0.2s ease;
+}
+
+.close-icon:hover {
+    color: #818181;
 }
 
 .panel-music {
-    background: linear-gradient(135deg, rgba(180,50,50,0.3), rgba(120,0,0,0.3));
+    /*background: linear-gradient(135deg, rgba(180,50,50,0.3), rgba(120,0,0,0.3));*/
+    background: transparent;
+    margin-top: 10%;
 }
 
 .panel-notifications {
-    background: linear-gradient(135deg, rgba(50,180,50,0.3), rgba(0,100,0,0.3));
+    /*background: linear-gradient(135deg, rgba(50,180,50,0.3), rgba(0,100,0,0.3));*/
+    background: transparent;
 }
 
 .panel-profile {
-    background: linear-gradient(135deg, rgba(100,50,180,0.3), rgba(50,0,100,0.3));
+    /*background: linear-gradient(135deg, rgba(100,50,180,0.3), rgba(50,0,100,0.3));*/
+    background: transparent;
 }
-
 
 .panel-music img {
-    max-width: 65%;       
-    height: auto;          
-    border-radius: 15px;   
-    object-fit: cover;     
+    max-width: 80%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
     display: block;
-    margin: 0 auto;        
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+
+.panel.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.active-left {
+    animation: enterLeft 0.4s ease forwards;
+}
+
+.active-right {
+    animation: enterRight 0.4s ease forwards;
+}
+
+.exit-left {
+    animation: exitLeft 0.4s ease forwards;
+}
+
+.exit-right {
+    animation: exitRight 0.4s ease forwards;
+}
+
+@keyframes enterLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes enterRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes exitLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes exitRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.now-playing-card {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(255, 0, 150, 0.2), rgba(0, 200, 255, 0.2));
+    border-radius: 15px;
+    padding: 10px 15px 10px 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    z-index: 5;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom; 
+    transition: transform 0.5s ease, opacity 0.5s ease, background 0.5s ease-in-out;
+}
+
+.now-playing-card.show {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+}
+
+.now-playing-card.hide {
+    transform: translateX(-50%) scaleY(0);
+    opacity: 0;
+}
+
+
+.now-playing-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.now-playing-info {
+    flex-grow: 1;
+}
+
+.now-playing-info h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.now-playing-info p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.now-playing-actions {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.now-playing-actions i:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+    color: #ffd700;
+}       
+
+.now-playing-img,
+.now-playing-info h4,
+.now-playing-info p {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.now-playing-card.hidden {
+    display: none;
+}
+
