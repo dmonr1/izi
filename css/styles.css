@@ -32,6 +32,7 @@ body {
     border-radius: 40px;
     padding: 12px 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 10;
 }
 
 .toolbar-icons {
@@ -341,66 +342,61 @@ body {
     top: -50px;
 }
 
-.wrapper-img{
-    height: 58%;
-}
 
-.music-img {
+/* CONTENEDOR */
+.wrapper-img {
+    height: 58%;
     max-width: 82.5%;
-    border-radius: 15px;
-    object-fit: cover;
-    display: block;
     margin: 0 auto;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    border-radius: 15px;
+    overflow: hidden; /* 🔥 evita que se vea fuera */
     position: relative;
 }
 
-.slide-out-left {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  .slide-out-right {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  
-  .slide-in-right {
+/* IMÁGENES */
+.music-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: absolute; /* 🔥 se apilan dentro del wrapper */
+    top: 0;
+    left: 0;
     transform: translateX(0);
-    opacity: 1;
-    animation: slideInFromRight 0.4s forwards;
-  }
-  .slide-in-left {
-    transform: translateX(0);
-    opacity: 1;
-    animation: slideInFromLeft 0.4s forwards;
-  }
-  
-  @keyframes slideInFromRight {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideInFromLeft {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
+}
+
+/* ====== ANIMACIONES DE SALIDA Y ENTRADA ====== */
+.slide-out-left   { animation: moveOutLeft 0.4s forwards; }
+.slide-out-right  { animation: moveOutRight 0.4s forwards; }
+.slide-in-left    { animation: moveInLeft 0.4s forwards; }
+.slide-in-right   { animation: moveInRight 0.4s forwards; }
+
+/* ====== KEYFRAMES ====== */
+@keyframes moveOutLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+}
+
+@keyframes moveOutRight {
+    from { transform: translateX(0); }
+    to   { transform: translateX(100%); }
+}
+
+@keyframes moveInLeft {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(0); }
+}
+
+@keyframes moveInRight {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+}
+
 
 .music-header {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .music-artist-top {
@@ -586,7 +582,7 @@ body {
     position: absolute;
     bottom: 100px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(100%); /* empieza oculto, más abajo */
     width: 24%;
     display: flex;
     align-items: center;
@@ -600,10 +596,22 @@ body {
     overflow: hidden;
 
     opacity: 0;
-    transform: translateX(-50%) scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.5s ease, opacity 0.5s ease, background 0.5s ease-in-out;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
+/* Aparece (sube a su sitio) */
+.now-playing-card.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Desaparece (baja hacia fuera) */
+.now-playing-card.hidden {
+    transform: translateX(-50%) translateY(120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 .progress-container {
     position: absolute;
@@ -624,15 +632,6 @@ body {
     transition: width 0.2s linear;
 }
 
-.now-playing-card.show {
-    transform: translateX(-50%) scaleY(1);
-    opacity: 1;
-}
-
-.now-playing-card.hide {
-    transform: translateX(-50%) scaleY(0);
-    opacity: 0;
-}
 
 .now-playing-img {
     width: 50px;
