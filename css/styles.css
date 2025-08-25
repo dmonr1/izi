@@ -197,17 +197,18 @@ body {
     background: transparent;
 }
 
+/* Contenedor general solo controla posición y altura */
 .panels {
     position: absolute;
     top: 120px;
     left: 50%;
     transform: translateX(-50%);
-    width: 25%;
     height: calc(100vh - 250px);
     display: flex;
     justify-content: center;
     align-items: flex-start;
-}
+  }
+  
 
 .panel {
     display: none;
@@ -242,6 +243,8 @@ body {
 .panel-home {
     /*background: linear-gradient(135deg, rgba(29,149,185,0.3), rgba(0,50,100,0.3)); */
     background: transparent;
+    width: 80% !important;  /* ocupa casi toda la pantalla */
+    height: 100%;
 }
 
 /*PANEL BUSCAR*/
