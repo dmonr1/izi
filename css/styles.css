@@ -197,18 +197,14 @@ body {
     background: transparent;
 }
 
-/* Contenedor general solo controla posición y altura */
 .panels {
     position: absolute;
     top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
+    width: 100%;
     height: calc(100vh - 250px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  
+}
 
 .panel {
     display: none;
@@ -222,43 +218,81 @@ body {
     border-radius: 20px;
     padding: 20px;
     backdrop-filter: blur(10px);
+    position: relative;
+    pointer-events: none;
 }
 
 .panel {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
     pointer-events: none;
+    display: none;
     transition: opacity 0.3s ease;
 }
 
 .panel.show {
     display: block;
     opacity: 1;
+    pointer-events: auto;
 }
 
 /*PANEL HOME*/
 
 .panel-home {
-    /*background: linear-gradient(135deg, rgba(29,149,185,0.3), rgba(0,50,100,0.3)); */
-    background: transparent;
-    width: 80% !important;  /* ocupa casi toda la pantalla */
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100%;
     height: 100%;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 0px 35px;
+    top: -40px;
+}
+
+.home-left-card {
+    flex: 0 0 20%;
+    max-width: 20%;
+    background: #2e2e2e;
+    border-radius: 20px;
+    padding: 20px;
+    height: 93.9%;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.home-right-card {
+    flex: 1;
+    max-width: 80%;
+    background: #333333;
+    border-radius: 20px;
+    padding: 20px;
+    height: 93.9%;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
 }
 
 /*PANEL BUSCAR*/
 
 .panel-search {
-    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
-    height: 80.7%;
+    height: 100%;
     overflow-y: auto;
-    padding: 0px 15px;
-    overflow-x: hidden;
-
+    padding: 20px 0;
+    box-sizing: border-box;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+.panel-search .content {
+    width: 25%;
+    max-width: 400px;
+    margin: 0 auto;
+    /* 👈 asegura que quede centrado */
 }
 
 .panel-search::-webkit-scrollbar {
@@ -277,6 +311,7 @@ body {
     opacity: 1;
     max-height: 100px;
     overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.45);
 }
 
 .song-card.removing {
@@ -342,60 +377,97 @@ body {
     /*background: linear-gradient(135deg, rgba(180,50,50,0.3), rgba(120,0,0,0.3));*/
     background: transparent;
     position: relative;
-    top: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 0 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    left: 38%;
+
 }
 
+.panel-music .content {
+    width: 25%;
+    max-width: 400px;
+    margin-left: 20px;
+}
 
 /* CONTENEDOR */
 .wrapper-img {
-    height: 58%;
-    max-width: 82.5%;
+    width: 82.5%;
+    aspect-ratio: 1 / 1;
     margin: 0 auto;
     border-radius: 15px;
-    overflow: hidden; /* 🔥 evita que se vea fuera */
+    overflow: hidden;
     position: relative;
 }
 
-/* IMÁGENES */
 .music-img {
+    position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
     object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    position: absolute; /* 🔥 se apilan dentro del wrapper */
-    top: 0;
-    left: 0;
-    transform: translateX(0);
 }
 
 /* ====== ANIMACIONES DE SALIDA Y ENTRADA ====== */
-.slide-out-left   { animation: moveOutLeft 0.4s forwards; }
-.slide-out-right  { animation: moveOutRight 0.4s forwards; }
-.slide-in-left    { animation: moveInLeft 0.4s forwards; }
-.slide-in-right   { animation: moveInRight 0.4s forwards; }
+.slide-out-left {
+    animation: moveOutLeft 0.4s forwards;
+}
+
+.slide-out-right {
+    animation: moveOutRight 0.4s forwards;
+}
+
+.slide-in-left {
+    animation: moveInLeft 0.4s forwards;
+}
+
+.slide-in-right {
+    animation: moveInRight 0.4s forwards;
+}
 
 /* ====== KEYFRAMES ====== */
 @keyframes moveOutLeft {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-100%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 @keyframes moveOutRight {
-    from { transform: translateX(0); }
-    to   { transform: translateX(100%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
 }
 
 @keyframes moveInLeft {
-    from { transform: translateX(-100%); }
-    to   { transform: translateX(0); }
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 @keyframes moveInRight {
-    from { transform: translateX(100%); }
-    to   { transform: translateX(0); }
-}
+    from {
+        transform: translateX(100%);
+    }
 
+    to {
+        transform: translateX(0);
+    }
+}
 
 .music-header {
     text-align: center;
@@ -497,19 +569,38 @@ body {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.music-extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0 45px;
+}
+
+.music-extra i {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.music-extra i:hover {
+    color: rgb(43, 176, 216);
+    transform: scale(1.2);
+}
 
 /*PANEL NOTI*/
 
-.panel-notifications {
-    /*background: linear-gradient(135deg, rgba(50,180,50,0.3), rgba(0,100,0,0.3));*/
-    background: transparent;
+.panel-notifications,
+.panel-profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-/*PANEL PERFIL*/
-
-.panel-profile {
-    /*background: linear-gradient(135deg, rgba(100,50,180,0.3), rgba(50,0,100,0.3));*/
-    background: transparent;
+.panel-notifications .content,
+.panel-profile .content {
+    width: 25%;
+    max-width: 400px;
 }
 
 .panel.show {
@@ -518,65 +609,65 @@ body {
 }
 
 .active-left {
-    animation: enterLeft 0.4s ease forwards;
+    animation: enterLeft 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
 .active-right {
-    animation: enterRight 0.4s ease forwards;
+    animation: enterRight 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
 .exit-left {
-    animation: exitLeft 0.4s ease forwards;
+    animation: exitLeft 0.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 .exit-right {
-    animation: exitRight 0.4s ease forwards;
+    animation: exitRight 0.6s cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 @keyframes enterLeft {
     from {
-        transform: translateX(-100%);
+        transform: translateX(-100%) scale(0.95);
         opacity: 0;
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
     }
 }
 
 @keyframes enterRight {
     from {
-        transform: translateX(100%);
+        transform: translateX(100%) scale(0.95);
         opacity: 0;
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
     }
 }
 
 @keyframes exitLeft {
     from {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
     }
 
     to {
-        transform: translateX(-100%);
+        transform: translateX(-100%) scale(0.95);
         opacity: 0;
     }
 }
 
 @keyframes exitRight {
     from {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
     }
 
     to {
-        transform: translateX(100%);
+        transform: translateX(100%) scale(0.95);
         opacity: 0;
     }
 }
@@ -585,7 +676,7 @@ body {
     position: absolute;
     bottom: 100px;
     left: 50%;
-    transform: translateX(-50%) translateY(100%); /* empieza oculto, más abajo */
+    transform: translateX(-50%) translateY(100%);
     width: 24%;
     display: flex;
     align-items: center;
@@ -597,24 +688,20 @@ body {
     color: white;
     z-index: 5;
     overflow: hidden;
-
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Aparece (sube a su sitio) */
 .now-playing-card.show {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
 }
 
-/* Desaparece (baja hacia fuera) */
 .now-playing-card.hidden {
     transform: translateX(-50%) translateY(120%);
     opacity: 0;
     pointer-events: none;
 }
-
 
 .progress-container {
     position: absolute;
@@ -634,7 +721,6 @@ body {
     background: #ffffff;
     transition: width 0.2s linear;
 }
-
 
 .now-playing-img {
     width: 50px;
