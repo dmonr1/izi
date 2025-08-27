@@ -1,5 +1,5 @@
 // ============================
-// 🎵 VARIABLES GLOBALES
+//  VARIABLES GLOBALES
 // ============================
 const items = document.querySelectorAll(".toolbar-item");
 const indicator = document.querySelector(".indicator");
@@ -27,7 +27,7 @@ const nowTitle = document.querySelector(".now-playing-info h4");
 const nowArtist = document.querySelector(".now-playing-info p");
 
 // ============================
-// 🎵 DATA
+// DATA
 // ============================
 const musicFiles = {
   VeLDÁ: "../assets/music/velda.mp3",
@@ -46,7 +46,7 @@ const musicArtists = {
 };
 
 // ============================
-// 🎵 ESTADO
+//  ESTADO
 // ============================
 let isPlaying = false;
 let fadeInterval = null;
@@ -56,7 +56,7 @@ let currentSongIndex = songTitles.indexOf("Coqueta");
 let lastIndex = 0;
 
 // ============================
-// 🎵 FUNCIONES AUXILIARES
+//  FUNCIONES AUXILIARES
 // ============================
 function moveIndicator(element) {
   const left =
@@ -71,7 +71,7 @@ function formatTime(seconds) {
 }
 
 // ============================
-// 🎵 REPRODUCCIÓN
+//  REPRODUCCIÓN
 // ============================
 function fadeIn() {
   clearInterval(fadeInterval);
@@ -134,7 +134,6 @@ function changeSong(title, direction = "next") {
     audio.src = newSrc;
     audio.currentTime = 0;
 
-    // 🔥 Si selecciono una canción, quiero que suene
     isPlaying = true;
     audio.play();
     fadeIn();
@@ -169,7 +168,7 @@ function changeSong(title, direction = "next") {
 }
 
 // ============================
-// 🎵 AUTO-PLAY SIGUIENTE CANCIÓN
+//  AUTO-PLAY SIGUIENTE CANCIÓN
 // ============================
 audio.addEventListener("ended", () => {
   currentSongIndex = (currentSongIndex + 1) % songTitles.length;
@@ -177,7 +176,7 @@ audio.addEventListener("ended", () => {
 });
 
 // ============================
-// 🎵 EVENTOS UI
+//  EVENTOS UI
 // ============================
 cardPlay.addEventListener("click", togglePlay);
 controlPlay.addEventListener("click", togglePlay);
@@ -228,7 +227,7 @@ document
   });
 
 // ============================
-// 🎵 TOOLBAR Y PANELES
+//  TOOLBAR Y PANELES
 // ============================
 function showPanel(panelClass, comingFromLeft) {
   panels.forEach((panel) =>
@@ -247,7 +246,6 @@ function showPanel(panelClass, comingFromLeft) {
     panel.classList.add("show");
   }
 
-  // 🔥 controlar visibilidad del Now Playing Card con animación
   if (panelClass === "panel-music") {
     nowCard.classList.remove("show");
     nowCard.classList.add("hide");
@@ -266,7 +264,7 @@ window.addEventListener("DOMContentLoaded", () => {
   isPlaying = false;
   updateIcons();
 
-  nowCard.classList.add("show"); // 👈 empieza visible
+  nowCard.classList.add("show"); 
 });
 
 items.forEach((item, index) => {
@@ -295,7 +293,7 @@ items.forEach((item, index) => {
 });
 
 // ============================
-// 🎵 INICIO
+//  INICIO
 // ============================
 window.addEventListener("DOMContentLoaded", () => {
   moveIndicator(items[0]);
