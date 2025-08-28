@@ -264,7 +264,7 @@ window.addEventListener("DOMContentLoaded", () => {
   isPlaying = false;
   updateIcons();
 
-  nowCard.classList.add("show"); 
+  nowCard.classList.add("show");
 });
 
 items.forEach((item, index) => {
@@ -310,4 +310,21 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("resize", () => {
   const activeItem = document.querySelector(".toolbar-item.active");
   if (activeItem) moveIndicator(activeItem);
+});
+
+// ============================
+//  DROPDOWN
+// ============================
+
+function toggleDropdown() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.classList.toggle("show");
+}
+
+document.addEventListener("click", function (event) {
+  const profileBlock = document.querySelector(".profile-block");
+  const dropdown = document.getElementById("dropdownMenu");
+  if (!profileBlock.contains(event.target)) {
+    dropdown.classList.remove("show");
+  }
 });

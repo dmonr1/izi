@@ -13,11 +13,34 @@
 <body>
     <section class="back">
         <header class="head">
-            <span class="header-title">hola</span>
-            <div class="avatar">
-                <img src="../assets/images/nico.png" alt="Avatar">
+            <div class="profile-block" onclick="toggleDropdown()">
+                <div class="avatar">
+                    <img src="../assets/images/nico.png" alt="Avatar">
+                </div>
+                <div class="user-info">
+                    <span class="user-name">Nicolle Francesca Amarillo Alejos</span>
+                    <span class="user-nickname">@izicode</span>
+                </div>
+
+                <div class="dropdown" id="dropdownMenu">
+                    <div class="dropdown-header">
+                        <p><strong>Nombres:</strong> Nicolle Francesca</p>
+                        <p><strong>Apellidos:</strong> Amarillo Alejos</p>
+                        <p>
+                            Premium
+                            <i style="margin-left: 5px; color: rgb(97, 211, 32);" class="fa-solid fa-circle-check"></i>
+                        </p>
+                        <small style="color:#aaa;">+51 924 171 233</small>
+                    </div>
+                    <ul>
+                        <li><i class="fa-solid fa-user"></i> Perfil</li>
+                        <li><i class="fa-solid fa-gear"></i> Configuración</li>
+                        <li><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</li>
+                    </ul>
+                </div>
             </div>
         </header>
+
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Realice su búsqueda">
