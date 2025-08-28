@@ -162,7 +162,7 @@ body {
 
 .search-bar {
     position: absolute;
-    top: 60px;
+    top: 95px;
     left: 50%;
     transform: translateX(-50%);
     width: 280px;
@@ -277,6 +277,7 @@ body {
 
 .panel-search {
     display: flex;
+    top:20px;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
@@ -798,6 +799,35 @@ body {
     display: none;
 }
 
-.head{
+.head {
+    height: 60px;
+    display: flex;
+    justify-content: space-between; /* texto a la izq y avatar a la der */
+    align-items: center;
+    padding: 0 20px;
+    background: transparent;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* sombra inferior */
+    position: relative;
+    z-index: 5;
+}
+
+.header-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.avatar {
+    width: 40px;
     height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6); /* sombra alrededor */
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
