@@ -262,6 +262,12 @@ body {
     height: 93.9%;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.home-left-card ::-webkit-scrollbar {
+    display: none;
 }
 
 .section-title {
@@ -273,8 +279,14 @@ body {
     color: #fff;
 }
 
+.section-title h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .section-title i {
-    margin-left: 10px;
+    margin-left: 15px;
     cursor: pointer;
 }
 
@@ -285,12 +297,13 @@ body {
     gap: 10px;
 }
 
-/* Opciones Listas / Álbumes */
 .options {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
     margin: 10px 0;
 }
+
 .option {
     padding: 5px 10px;
     border-radius: 15px;
@@ -298,12 +311,12 @@ body {
     cursor: pointer;
     font-size: 12px;
 }
+
 .option.active {
     background: #666;
     font-weight: bold;
 }
 
-/* Buscar */
 .search-section {
     margin: 15px 0;
     display: flex;
@@ -313,7 +326,6 @@ body {
     font-size: 14px;
 }
 
-/* Recientes */
 .recientes {
     margin: 10px 0;
     display: flex;
@@ -322,12 +334,12 @@ body {
     color: #fff;
 }
 
-/* Álbumes */
 .album-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .album-item {
     display: flex;
     align-items: center;
@@ -335,33 +347,41 @@ body {
     margin-bottom: 12px;
     cursor: pointer;
 }
+
 .album-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
+    width: 65px;
+    height: 65px;
+    border-radius: 10px;
     object-fit: cover;
     background: #555;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .album-img.saved {
-    background: #444;
+    background: linear-gradient(90deg, #1d95b956, #1eacd781);
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
 }
+
 .album-info {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;       
     color: #ddd;
 }
+
 .album-info strong {
-    font-size: 14px;
+    font-size: 15px;
 }
+
 .album-info small {
     font-size: 12px;
     color: #aaa;
 }
+
 
 .home-right-card {
     flex: 1;
