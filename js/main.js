@@ -29,20 +29,25 @@ const nowArtist = document.querySelector(".now-playing-info p");
 // ============================
 // DATA
 // ============================
+
 const musicFiles = {
-  VeLDÁ: "../assets/music/velda.mp3",
-  Abrazame: "../assets/music/abrazame.mp3",
-  Coqueta: "../assets/music/coqueta.mp3",
-  Heaven: "../assets/music/heaven.mp3",
-  Incondicional: "../assets/music/incondicional.mp3",
+  velda: "../assets/music/velda.mp3",
+  topdiesel: "../assets/music/top-diesel.mp3",
+  abrazame: "../assets/music/abrazame.mp3",
+  coqueta: "../assets/music/coqueta.mp3",
+  heaven: "../assets/music/heaven.mp3",
+  pillara: "../assets/music/si-te-pillara.mp3",
+  incondicional: "../assets/music/incondicional.mp3",
 };
 
 const musicArtists = {
-  VeLDÁ: "Bad Bunny",
-  Abrazame: "Juan Gabriel",
-  Coqueta: "Grupo Frontera",
-  Heaven: "Bryan Adams",
-  Incondicional: "Prince Royce",
+  velda: "Bad Bunny",
+  topdiesel: "Beéle",
+  abrazame: "Juan Gabriel",
+  coqueta: "Grupo Frontera",
+  heaven: "Bryan Adams",
+  pillara: "Beéle",
+  incondicional: "Prince Royce",
 };
 
 // ============================
@@ -119,8 +124,8 @@ function togglePlay() {
   updateIcons();
 }
 
-function changeSong(title, direction = "next") {
-  const newSrc = musicFiles[title];
+function changeSong(key, direction = "next") {
+  const newSrc = musicFiles[key];
   if (!newSrc) return;
 
   imgEl.classList.add(
@@ -139,13 +144,14 @@ function changeSong(title, direction = "next") {
     fadeIn();
     updateIcons();
 
-    imgEl.src = `../assets/images/${title.toLowerCase()}.png`;
-    nowImg.src = `../assets/images/${title.toLowerCase()}.png`;
+    imgEl.src = `../assets/images/${key}.png`;
+    nowImg.src = `../assets/images/${key}.png`;
 
-    titleEl.textContent = title;
-    nowTitle.textContent = title;
+    const titleFormatted = cardTitleFormat(key);
+    titleEl.textContent = titleFormatted;
+    nowTitle.textContent = titleFormatted;
 
-    const artist = musicArtists[title] || "Desconocido";
+    const artist = musicArtists[key] || "Desconocido";
     artistEl.textContent = artist;
     artistTopEl.textContent = artist;
     nowArtist.textContent = artist;
@@ -165,6 +171,18 @@ function changeSong(title, direction = "next") {
       nowImg.classList.remove("slide-in-right", "slide-in-left");
     }, 400);
   }, 400);
+}
+
+function cardTitleFormat(key) {
+  const titles = {
+    velda: "VeLDÁ",
+    topdiesel: "Top Diesel",
+    abrazame: "Abrazame muy fuerte",
+    coqueta: "Coqueta",
+    heaven: "Heaven",
+    incondicional: "Incondicional",
+  };
+  return titles[key] || key;
 }
 
 // ============================
@@ -194,8 +212,8 @@ document.querySelector(".fa-backward-step").addEventListener("click", () => {
 
 document.querySelectorAll(".song-card").forEach((card) => {
   card.addEventListener("click", () => {
-    const title = card.querySelector("h3").innerText;
-    changeSong(title);
+    const songKey = card.dataset.song; // <-- clave segura del data-song
+    changeSong(songKey);
   });
 });
 
