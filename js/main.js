@@ -369,3 +369,4 @@ expandBtnLeft.addEventListener('click', () => {
   expandBtnLeft.classList.add('hidden');
   expandBtnRight.classList.remove('hidden');
 });
+
