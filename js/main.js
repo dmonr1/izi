@@ -346,3 +346,26 @@ document.addEventListener("click", function (event) {
     dropdown.classList.remove("show");
   }
 });
+
+
+// ============================
+//  EXTENDER PANEL HOME
+// ============================
+
+const leftCard = document.querySelector('.home-left-card');
+
+// Buscamos los íconos con querySelector más específico
+const expandBtnRight = document.querySelector('.section-title .fa-arrow-right');
+const expandBtnLeft = document.querySelector('.section-title .fa-arrow-left');
+
+expandBtnRight.addEventListener('click', () => {
+  leftCard.classList.add('expanded');
+  expandBtnRight.classList.add('hidden');
+  expandBtnLeft.classList.remove('hidden');
+});
+
+expandBtnLeft.addEventListener('click', () => {
+  leftCard.classList.remove('expanded');
+  expandBtnLeft.classList.add('hidden');
+  expandBtnRight.classList.remove('hidden');
+});

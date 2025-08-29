@@ -258,18 +258,36 @@ body {
     max-width: 20%;
     background: #2e2e2e;
     border-radius: 20px;
-    padding: 20px;
+    padding: 25px;
     height: 93.9%;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
-    overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column; /* Para que su hijo crezca en vertical */
+    overflow: hidden; 
+}
+
+.home-left-card.expanded {
+    flex: 0 0 40%;
+    max-width: 40%;
 }
 
 .home-left-card ::-webkit-scrollbar {
     display: none;
 }
 
+.content-home{
+    flex: 1; /* Ocupará toda la altura disponible */
+    overflow-y: auto; /* Scroll interno */
+    max-height: 100%; /* No crecer más del contenedor */
+    padding-bottom: 20px; /* Espacio al final */
+}
+/* Ocultar scrollbars */
+.content-home::-webkit-scrollbar {
+    display: none;
+}
 .section-title {
     display: flex;
     align-items: center;
@@ -302,6 +320,15 @@ body {
     justify-content: flex-start;
     gap: 10px;
     margin: 10px 0;
+}
+
+.toggle-arrow {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .option {
@@ -367,7 +394,8 @@ body {
 
 .album-img.list {
     background: url(../assets/images/bebaportad.png) no-repeat center center;
-    background-size: cover; /* <-- hace que se ajuste */
+    background-size: cover;
+    /* <-- hace que se ajuste */
     color: #fff;
     font-size: 22px;
 }
@@ -382,8 +410,8 @@ body {
 .album-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    text-align: left;       
+    align-items: flex-start;
+    text-align: left;
     color: #ddd;
 }
 
