@@ -365,6 +365,20 @@ body {
     font-size: 22px;
 }
 
+.album-img.list {
+    background: url(../assets/images/bebaportad.png) no-repeat center center;
+    background-size: cover; /* <-- hace que se ajuste */
+    color: #fff;
+    font-size: 22px;
+}
+
+.album-img.list-2 {
+    background: url(../assets/images/bebanavida.jpg) no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    font-size: 22px;
+}
+
 .album-info {
     display: flex;
     flex-direction: column;
