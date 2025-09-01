@@ -257,7 +257,7 @@ body {
     flex: 0 0 20%;
     max-width: 20%;
     background: #2e2e2e;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 25px;
     height: 93.9%;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
@@ -338,20 +338,46 @@ body {
     background: #444;
     cursor: pointer;
     font-size: 12px;
+    transition: background 0.3s ease;
+    font-weight: 550;
 }
 
 .option.active {
-    background: #666;
+    background: #2fa7c5;
     font-weight: bold;
 }
 
 .search-section {
-    margin: 15px 0;
     display: flex;
     align-items: center;
-    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: transparent;
+    border-radius: 12px;
+    padding: 6px 6px;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.2s ease;
+}
+
+.search-section i {
     color: #bbb;
     font-size: 14px;
+}
+
+.input-search {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    flex: 1;
+}
+
+.input-search::placeholder {
+    color: #777;
+    font-family: 'Poppins', sans-serif;
 }
 
 .recientes {
@@ -376,7 +402,13 @@ body {
     cursor: pointer;
 }
 
+.album-table td:first-child {
+    width: 100%;
+    white-space: nowrap;
+}
+
 .album-img {
+    flex-shrink: 0;
     width: 65px;
     height: 65px;
     border-radius: 10px;
@@ -391,6 +423,7 @@ body {
     background: linear-gradient(90deg, #1d95b956, #1eacd781);
     color: #fff;
     font-size: 22px;
+
 }
 
 .album-img.list {
@@ -424,20 +457,11 @@ body {
     color: #aaa;
 }
 
-.home-right-card {
-    flex: 1;
-    max-width: 80%;
-    background: #333333;
-    border-radius: 20px;
-    padding: 20px;
-    height: 93.9%;
-    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
-}
-
 .album-table {
     width: 100%;
     border-collapse: collapse;
     color: #ddd;
+
 }
 
 .album-table th {
@@ -465,6 +489,34 @@ body {
 .home-left-card.expanded .expand-only {
     display: table-cell;
     font-size: 12px;
+}
+
+.home-mid-card {
+    flex: 1;
+    max-width: 60%;
+    background: #333333;
+    border-radius: 25px;
+    padding: 20px;
+    height: 93.9%;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.home-right-container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 94%;
+}
+
+.home-right-card-top,
+.home-right-card-bot {
+    background: #333333;
+    color: white;
+    padding: 15px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+    height: 50%;
 }
 
 /*PANEL BUSCAR*/
@@ -1005,6 +1057,30 @@ body {
     z-index: 5;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.icons-block {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+.icons-block i {
+    transition: transform 0.2s, color 0.2s;
+}
+
+.icons-block i:hover {
+    transform: scale(1.2);
+    color: #5dcce7;
+}
+
 .profile-block {
     display: flex;
     flex-direction: row-reverse;
@@ -1036,7 +1112,7 @@ body {
     align-items: flex-end;
     text-align: right;
     margin-top: 5px;
-    width: 180px;
+    width: 200px;
 }
 
 .user-name {
@@ -1064,7 +1140,7 @@ body {
 .dropdown {
     position: absolute;
     top: 60px;
-    right: 0;
+    right: 18px;
     background: rgba(30, 30, 30, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 12px;
@@ -1073,7 +1149,6 @@ body {
     z-index: 10;
     padding: 10px;
     overflow: hidden;
-
     max-height: 0;
     opacity: 0;
     transform: translateY(-12px);

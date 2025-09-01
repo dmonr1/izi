@@ -57,7 +57,7 @@ let isPlaying = false;
 let fadeInterval = null;
 
 const songTitles = Object.keys(musicFiles);
-let currentSongIndex = songTitles.indexOf("Coqueta");
+let currentSongIndex = songTitles.indexOf("coqueta");
 let lastIndex = 0;
 
 // ============================
@@ -185,6 +185,45 @@ function cardTitleFormat(key) {
   return titles[key] || key;
 }
 
+// Selecciona todas las filas de la tabla
+const songRows = document.querySelectorAll(".album-table tbody tr");
+
+songRows.forEach(row => {
+  row.addEventListener("click", () => {
+    const info = row.querySelector(".album-info small").textContent.toLowerCase();
+    const title = row.querySelector(".album-info strong").textContent.trim().toLowerCase();
+
+    // ✅ Solo si es canción
+    if (info.includes("canción")) {
+      const key = titleToKey[title];
+      if (key && musicFiles[key]) {
+        currentSongIndex = songTitles.indexOf(key);
+        changeSong(key, "next");
+        isPlaying = true;
+        audio.play();
+        updateIcons();
+      } else {
+        console.warn("No se encontró el archivo para:", title);
+      }
+    }
+  });
+});
+
+// Normalización de títulos a claves válidas
+const titleToKey = {
+  "velda": "velda",
+  "veldá": "velda",
+  "abrazame": "abrazame",
+  "abrázame": "abrazame",
+  "coqueta": "coqueta",
+  "heaven": "heaven",
+  "incondicional": "incondicional",
+  "si te pillara": "pillara",
+  "beéle": "topdiesel" // ejemplo si quieres mapear artista a canción
+};
+
+
+
 // ============================
 //  AUTO-PLAY SIGUIENTE CANCIÓN
 // ============================
@@ -277,7 +316,7 @@ window.addEventListener("DOMContentLoaded", () => {
   moveIndicator(items[0]);
   showPanel("panel-home");
 
-  audio.src = musicFiles["Coqueta"];
+  audio.src = musicFiles["coqueta"];
   audio.currentTime = 0;
   isPlaying = false;
   updateIcons();
@@ -317,7 +356,7 @@ window.addEventListener("DOMContentLoaded", () => {
   moveIndicator(items[0]);
   showPanel("panel-home");
 
-  audio.src = musicFiles["Coqueta"];
+  audio.src = musicFiles["coqueta"];
   audio.currentTime = 0;
   isPlaying = false;
   updateIcons();
@@ -347,14 +386,12 @@ document.addEventListener("click", function (event) {
   }
 });
 
-
 // ============================
 //  EXTENDER PANEL HOME
 // ============================
 
 const leftCard = document.querySelector('.home-left-card');
 
-// Buscamos los íconos con querySelector más específico
 const expandBtnRight = document.querySelector('.section-title .fa-arrow-right');
 const expandBtnLeft = document.querySelector('.section-title .fa-arrow-left');
 
@@ -370,3 +407,39 @@ expandBtnLeft.addEventListener('click', () => {
   expandBtnRight.classList.remove('hidden');
 });
 
+
+// ============================
+//  FILTRO OPTIONS
+// ============================
+
+const options = document.querySelectorAll(".options .option");
+const rows = document.querySelectorAll(".album-table tbody tr");
+
+options.forEach(option => {
+  option.addEventListener("click", () => {
+    const isActive = option.classList.contains("active");
+    
+    options.forEach(o => o.classList.remove("active"));
+
+    if (isActive) {
+      rows.forEach(row => row.style.display = "table-row");
+    } else {
+      option.classList.add("active");
+      const selected = option.textContent.trim().toLowerCase();
+
+      rows.forEach(row => {
+        const info = row.querySelector(".album-info small").textContent.toLowerCase();
+
+        if (selected === "listas" && info.includes("playlist")) {
+          row.style.display = "table-row";
+        } else if (selected === "canciones" && info.includes("canción")) {
+          row.style.display = "table-row";
+        } else if (selected === "artistas" && info.includes("artista")) {
+          row.style.display = "table-row";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+  });
+});

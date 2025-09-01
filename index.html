@@ -14,34 +14,43 @@
 <body>
     <section class="back">
         <header class="head">
-            <div class="profile-block" onclick="toggleDropdown()">
-                <div class="avatar">
-                    <img src="../assets/images/nico.png" alt="Avatar">
+            <div class="header-right">
+                <div class="icons-block">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-message"></i>
+                    <i class="fa-solid fa-dog"></i>
                 </div>
-                <div class="user-info">
-                    <span class="user-name">Nicolle Francesca Amarillo Alejos</span>
-                    <span class="user-nickname">@izicode</span>
-                </div>
-
-                <div class="dropdown" id="dropdownMenu">
-                    <div class="dropdown-header">
-                        <p><strong>Nombres:</strong> Nicolle Francesca</p>
-                        <p><strong>Apellidos:</strong> Amarillo Alejos</p>
-                        <p>
-                            Premium
-                            <i style="margin-left: 5px; color: rgb(97, 211, 32);" class="fa-solid fa-circle-check"></i>
-                        </p>
-                        <small style="color:#aaa;">+51 924 171 233</small>
+        
+                <div class="profile-block" onclick="toggleDropdown()">
+                    <div class="avatar">
+                        <img src="../assets/images/nico.png" alt="Avatar">
                     </div>
-                    <ul>
-                        <li><i class="fa-solid fa-user"></i> Perfil</li>
-                        <li><i class="fa-solid fa-gear"></i> Configuración</li>
-                        <li><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</li>
-                    </ul>
+                    <div class="user-info">
+                        <span class="user-name">Nicolle Francesca Amarillo Alejos</span>
+                        <span class="user-nickname">@izicode</span>
+                    </div>
+        
+                    <div class="dropdown" id="dropdownMenu">
+                        <div class="dropdown-header">
+                            <p><strong>Nombres:</strong> Nicolle Francesca</p>
+                            <p><strong>Apellidos:</strong> Amarillo Alejos</p>
+                            <p>
+                                Premium
+                                <i style="margin-left: 5px; color: rgb(97, 211, 32);" class="fa-solid fa-circle-check"></i>
+                            </p>
+                            <small style="color:#aaa;">+51 924 171 233</small>
+                        </div>
+                        <ul>
+                            <li><i class="fa-solid fa-user"></i> Perfil</li>
+                            <li><i class="fa-solid fa-gear"></i> Configuración</li>
+                            <li><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
-
+        
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Realice su búsqueda">
@@ -61,13 +70,15 @@
                     </div>
 
                     <div class="options">
-                        <span class="option active">Listas</span>
-                        <span class="option">Álbumes</span>
+                        <span class="option">Listas</span>
+                        <span class="option">Canciones</span>
+                        <span class="option">Artistas</span>
                     </div>
 
                     <div class="search-section">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>Buscar</span>
+                        <input class="input-search" placeholder="Buscar" type="text">
+
                     </div>
 
 
@@ -88,15 +99,15 @@
                                                 <i class="fa-solid fa-bookmark"></i>
                                             </div>
                                             <div class="album-info">
-                                                <strong>Tus guardados</strong>
-                                                <small>Nicolle Amarillo - Canciones</small>
+                                                <strong>Guardados</strong>
+                                                <small>Nicolle Amarillo - Playlist</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="expand-only">15/08/2025</td>
                                     <td class="expand-only">20/08/2025</td>
                                 </tr>
-                    
+
                                 <tr>
                                     <td>
                                         <div class="album-item">
@@ -110,19 +121,33 @@
                                     <td class="expand-only">12/08/2025</td>
                                     <td class="expand-only">23/08/2025</td>
                                 </tr>
-                    
+
                                 <tr>
                                     <td>
                                         <div class="album-item">
-                                            <img src="../assets/images/VeLDÁ.png" alt="VeLDÁ" class="album-img">
+                                            <img src="../assets/images/pillara.png" alt="VeLDÁ" class="album-img">
                                             <div class="album-info">
-                                                <strong>VeLDÁ</strong>
-                                                <small>Bad Bunny</small>
+                                                <strong>Beéle</strong>
+                                                <small>Artista</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="expand-only">12/08/2025</td>
-                                    <td class="expand-only">23/08/2025</td>
+                                    <td class="expand-only"></td>
+                                    <td class="expand-only">13/08/2025</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="album-item">
+                                            <img src="../assets/images/velda.png" alt="VeLDÁ" class="album-img">
+                                            <div class="album-info">
+                                                <strong>VeLDÁ</strong>
+                                                <small>Bad Bunny - Canción</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="expand-only"></td>
+                                    <td class="expand-only">13/08/2025</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -135,8 +160,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="expand-only">12/08/2025</td>
-                                    <td class="expand-only">23/08/2025</td>
+                                    <td class="expand-only">29/04/2024</td>
+                                    <td class="expand-only">20/08/2025</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -144,7 +169,7 @@
                                             <img src="../assets/images/abrazame.png" alt="Abrazame" class="album-img">
                                             <div class="album-info">
                                                 <strong>Abrazame</strong>
-                                                <small>Juan Gabriel</small>
+                                                <small>Juan Gabriel - Canción</small>
                                             </div>
                                         </div>
                                     </td>
@@ -154,14 +179,15 @@
                                 <tr>
                                     <td>
                                         <div class="album-item">
-                                            <img src="../assets/images/incondicional.png" alt="Incondicional" class="album-img">
+                                            <img src="../assets/images/incondicional.png" alt="Incondicional"
+                                                class="album-img">
                                             <div class="album-info">
                                                 <strong>Incondicional</strong>
-                                                <small>Prince Royce</small>
+                                                <small>Prince Royce - Canción</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="expand-only">12/08/2025</td>
+                                    <td class="expand-only"></td>
                                     <td class="expand-only">23/08/2025</td>
                                 </tr>
                                 <tr>
@@ -170,11 +196,11 @@
                                             <img src="../assets/images/coqueta.png" alt="Coqueta" class="album-img">
                                             <div class="album-info">
                                                 <strong>Coqueta</strong>
-                                                <small>Grupo Frontera</small>
+                                                <small>Grupo Frontera - Canción</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="expand-only">12/08/2025</td>
+                                    <td class="expand-only"></td>
                                     <td class="expand-only">23/08/2025</td>
                                 </tr>
                                 <tr>
@@ -183,30 +209,41 @@
                                             <img src="../assets/images/heaven.png" alt="Heaven" class="album-img">
                                             <div class="album-info">
                                                 <strong>Heaven</strong>
-                                                <small>Bryan Adams</small>
+                                                <small>Bryan Adams - Canción</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="expand-only">12/08/2025</td>
-                                    <td class="expand-only">23/08/2025</td>
+                                    <td class="expand-only"></td>
+                                    <td class="expand-only">09/03/2025</td>
                                 </tr>
-                    
+
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-
-
-                <div class="home-right-card">
+                <div class="home-mid-card">
                     <h3>Contenido Principal</h3>
                     <p>Este ocupa el 80% con fondo en gradiente.</p>
                 </div>
+
+                <div class="home-right-container">
+                    <div class="home-right-card-top">
+                        <h3>Contenido Principal</h3>
+                        <p>Este ocupa el 80% con fondo en gradiente.</p>
+                    </div>
+                    <div class="home-right-card-bot">
+                        <h3>Contenido Principal</h3>
+                        <p>Este ocupa el 80% con fondo en gradiente.</p>
+                    </div>
+                </div>
+                
+
             </div>
             <div class="panel panel-search">
                 <div class="content">
                     <div class="song-card" data-song="velda">
-                        <img src="../assets/images/VeLDÁ.png" alt="VeLDÁ">
+                        <img src="../assets/images/velda.png" alt="VeLDÁ">
                         <div class="song-info">
                             <h3>VeLDÁ</h3>
                             <p>Canción - Bad Bunny</p>
