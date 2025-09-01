@@ -455,21 +455,17 @@ const volumeFill = document.getElementById("volumeFill");
 
 let isDragging = false;
 
-// Toggle dropdown
 volumeIcon.addEventListener("click", (e) => {
   e.stopPropagation();
   volumeDropdown.classList.toggle("show");
 });
 
-// Cerrar al hacer click fuera
 document.addEventListener("click", () => {
   volumeDropdown.classList.remove("show");
 });
 
-// Evitar cierre al hacer click dentro
 volumeDropdown.addEventListener("click", (e) => e.stopPropagation());
 
-// Manejo del volumen arrastrando
 volumeBar.addEventListener("mousedown", (e) => {
   isDragging = true;
   updateVolume(e);
@@ -491,25 +487,24 @@ function updateVolume(e) {
   percentage = Math.max(0, Math.min(1, percentage));
   volumeFill.style.height = percentage * 100 + "%";
 
+  audio.volume = percentage; 
   console.log("Volumen:", Math.round(percentage * 100));
 }
 
 volumeDropdown.addEventListener("wheel", (e) => {
-  e.preventDefault(); // Evita que haga scroll en la página
+  e.preventDefault();
 
-  const rect = volumeBar.getBoundingClientRect();
-  let currentHeight = parseFloat(volumeFill.style.height) || 50; // si está vacío, 50%
-  let step = 5; // porcentaje por cada tick de scroll
+  let currentHeight = parseFloat(volumeFill.style.height) || 50; 
+  let step = 5; 
 
   if (e.deltaY < 0) {
-    // Scroll hacia arriba -> subir volumen
     currentHeight = Math.min(100, currentHeight + step);
   } else {
-    // Scroll hacia abajo -> bajar volumen
     currentHeight = Math.max(0, currentHeight - step);
   }
 
   volumeFill.style.height = currentHeight + "%";
 
+  audio.volume = currentHeight / 100;
   console.log("Volumen (scroll):", Math.round(currentHeight));
 });
