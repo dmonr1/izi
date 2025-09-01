@@ -16,12 +16,21 @@
         <header class="head">
             <div class="header-right">
                 <div class="icons-block">
-                    <i class="fa-solid fa-volume-high"></i>
+                    <div class="icon-wrapper">
+                        <i id="volumeIcon" class="fa-solid fa-volume-high"></i>
+
+                        <!-- Dropdown del volumen -->
+                        <div class="volume-dropdown" id="volumeDropdown">
+                            <div class="volume-bar" id="volumeBar">
+                                <div class="volume-fill" id="volumeFill"></div>
+                            </div>
+                        </div>
+                    </div> 
                     <i class="fa-solid fa-bell"></i>
                     <i class="fa-solid fa-message"></i>
                     <i class="fa-solid fa-dog"></i>
                 </div>
-        
+
                 <div class="profile-block" onclick="toggleDropdown()">
                     <div class="avatar">
                         <img src="../assets/images/nico.png" alt="Avatar">
@@ -30,14 +39,15 @@
                         <span class="user-name">Nicolle Francesca Amarillo Alejos</span>
                         <span class="user-nickname">@izicode</span>
                     </div>
-        
+
                     <div class="dropdown" id="dropdownMenu">
                         <div class="dropdown-header">
                             <p><strong>Nombres:</strong> Nicolle Francesca</p>
                             <p><strong>Apellidos:</strong> Amarillo Alejos</p>
                             <p>
                                 Premium
-                                <i style="margin-left: 5px; color: rgb(97, 211, 32);" class="fa-solid fa-circle-check"></i>
+                                <i style="margin-left: 5px; color: rgb(97, 211, 32);"
+                                    class="fa-solid fa-circle-check"></i>
                             </p>
                             <small style="color:#aaa;">+51 924 171 233</small>
                         </div>
@@ -50,7 +60,8 @@
                 </div>
             </div>
         </header>
-        
+
+
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Realice su búsqueda">
@@ -237,7 +248,7 @@
                         <p>Este ocupa el 80% con fondo en gradiente.</p>
                     </div>
                 </div>
-                
+
 
             </div>
             <div class="panel panel-search">
