@@ -31,13 +31,13 @@ const nowArtist = document.querySelector(".now-playing-info p");
 // ============================
 
 const musicFiles = {
-  velda: "../assets/music/velda.mp3",
-  topdiesel: "../assets/music/top-diesel.mp3",
-  abrazame: "../assets/music/abrazame.mp3",
-  coqueta: "../assets/music/coqueta.mp3",
-  heaven: "../assets/music/heaven.mp3",
-  pillara: "../assets/music/si-te-pillara.mp3",
-  incondicional: "../assets/music/incondicional.mp3",
+  velda: "/assets/music/velda.mp3",
+  topdiesel: "/assets/music/top-diesel.mp3",
+  abrazame: "/assets/music/abrazame.mp3",
+  coqueta: "/assets/music/coqueta.mp3",
+  heaven: "/assets/music/heaven.mp3",
+  pillara: "/assets/music/si-te-pillara.mp3",
+  incondicional: "/assets/music/incondicional.mp3",
 };
 
 const musicArtists = {
@@ -144,8 +144,8 @@ function changeSong(key, direction = "next") {
     fadeIn();
     updateIcons();
 
-    imgEl.src = `../assets/images/${key}.png`;
-    nowImg.src = `../assets/images/${key}.png`;
+    imgEl.src = `/assets/images/${key}.png`;
+    nowImg.src = `/assets/images/${key}.png`;
 
     const titleFormatted = cardTitleFormat(key);
     titleEl.textContent = titleFormatted;

@@ -427,14 +427,14 @@ body {
 }
 
 .album-img.list {
-    background: url(../assets/images/bebaportad.png) no-repeat center center;
+    background: url(/assets/images/bebaportad.png) no-repeat center center;
     background-size: cover;
     color: #fff;
     font-size: 22px;
 }
 
 .album-img.list-2 {
-    background: url(../assets/images/bebanavida.jpg) no-repeat center center;
+    background: url(/assets/images/bebanavida.jpg) no-repeat center center;
     background-size: cover;
     color: #fff;
     font-size: 22px;
@@ -1106,7 +1106,7 @@ body {
     top: 48px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 43px;
     height: 150px;
     background: rgba(30, 30, 30, 0.9);
     backdrop-filter: blur(10px);
@@ -1117,11 +1117,12 @@ body {
     justify-content: center;
     z-index: 20;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
 }
 
 .volume-bar {
     position: relative;
-    width: 25px;
+    width: 20px;
     height: 100%;
     background: #444;
     border-radius: 5px;
