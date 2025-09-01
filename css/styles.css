@@ -396,7 +396,6 @@ body {
 .album-img.list {
     background: url(../assets/images/bebaportad.png) no-repeat center center;
     background-size: cover;
-    /* <-- hace que se ajuste */
     color: #fff;
     font-size: 22px;
 }
@@ -425,7 +424,6 @@ body {
     color: #aaa;
 }
 
-
 .home-right-card {
     flex: 1;
     max-width: 80%;
@@ -435,7 +433,6 @@ body {
     height: 93.9%;
     box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
 }
-
 
 .album-table {
     width: 100%;
@@ -462,14 +459,13 @@ body {
 }
 
 .album-table .expand-only {
-    display: none; /* oculto por defecto */
+    display: none;
 }
 
-/* Cuando se expande la tarjeta */
 .home-left-card.expanded .expand-only {
-    display: table-cell; /* aparecen columnas */
+    display: table-cell;
+    font-size: 12px;
 }
-
 
 /*PANEL BUSCAR*/
 
