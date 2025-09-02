@@ -1103,7 +1103,7 @@ body {
     justify-content: center;
     z-index: 20;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    
+
 }
 
 .volume-bar {
@@ -1274,7 +1274,7 @@ body {
 
 /* === iPhone Pro / móviles hasta 430px === */
 @media (max-width: 430px) {
-   
+
 
     .toolbar-footer {
         width: 90%;
@@ -1287,13 +1287,20 @@ body {
     }
 
     .indicator {
-        width: 20%; /* ajusta a 4-5 ítems */
+        width: 20%;
+        /* ajusta a 4-5 ítems */
     }
 
     .search-bar {
         width: 90%;
         top: 70px;
         padding: 8px 12px;
+    }
+
+    .now-playing-card {
+        bottom: 100px;
+        left: 50%;
+        width: 85%;
     }
 
 
