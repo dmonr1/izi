@@ -185,7 +185,6 @@ function cardTitleFormat(key) {
   return titles[key] || key;
 }
 
-// Selecciona todas las filas de la tabla
 const songRows = document.querySelectorAll(".album-table tbody tr");
 
 songRows.forEach(row => {
@@ -193,7 +192,6 @@ songRows.forEach(row => {
     const info = row.querySelector(".album-info small").textContent.toLowerCase();
     const title = row.querySelector(".album-info strong").textContent.trim().toLowerCase();
 
-    // ✅ Solo si es canción
     if (info.includes("canción")) {
       const key = titleToKey[title];
       if (key && musicFiles[key]) {
@@ -209,7 +207,6 @@ songRows.forEach(row => {
   });
 });
 
-// Normalización de títulos a claves válidas
 const titleToKey = {
   "velda": "velda",
   "veldá": "velda",
@@ -219,7 +216,7 @@ const titleToKey = {
   "heaven": "heaven",
   "incondicional": "incondicional",
   "si te pillara": "pillara",
-  "beéle": "topdiesel" // ejemplo si quieres mapear artista a canción
+  "beéle": "topdiesel" 
 };
 
 
