@@ -1273,7 +1273,7 @@ body {
 }
 
 /* === iPhone Pro / móviles hasta 430px === */
-@media (max-width: 320px) {
+@media (max-width: 480px) {
 
 
     .toolbar-footer {
