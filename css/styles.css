@@ -1296,9 +1296,5 @@ body {
         padding: 8px 12px;
     }
 
-    .panels {
-        top: 100px;
-        height: calc(100vh - 150px);
-    }
 
 }
