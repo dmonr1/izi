@@ -1303,5 +1303,31 @@ body {
         width: 85%;
     }
 
+    .profile-block {
+        flex-direction: row; 
+        justify-content: flex-end; 
+    }
+
+    .profile-block .user-info {
+        display: none !important; 
+        width: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile-block .avatar {
+        width: 40px; 
+        height: 40px;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0px; 
+    }
+
+    .icons-block {
+        margin-right: 30px;
+    }
 
 }
