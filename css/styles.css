@@ -1330,4 +1330,17 @@ body {
         margin-right: 30px;
     }
 
+    .panel-search .content,
+    .panel-music .content,
+    .panel-notifications .content,
+    .panel-profile .content {
+        width: 95%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .song-card {
+        padding: 8px 10px;
+    }
+
 }
