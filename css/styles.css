@@ -19,6 +19,7 @@ body {
     height: 100vh;
     background: linear-gradient(#202020 0%, #111111 100%);
     position: relative;
+    overflow: hidden;
 }
 
 .toolbar-footer {
@@ -609,7 +610,6 @@ body {
     /*background: linear-gradient(135deg, rgba(180,50,50,0.3), rgba(120,0,0,0.3));*/
     background: transparent;
     position: relative;
-    display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
@@ -1293,7 +1293,7 @@ body {
 
     .search-bar {
         width: 90%;
-        top: 70px;
+        top: 60px;
         padding: 8px 12px;
     }
 
@@ -1334,13 +1334,42 @@ body {
     .panel-music .content,
     .panel-notifications .content,
     .panel-profile .content {
-        width: 95%;
+        width: 85%;
         max-width: 100%;
         margin: 0 auto;
     }
 
     .song-card {
         padding: 8px 10px;
+    }
+
+    .panel-home {
+        flex-direction: column !important; /* de fila a columna */
+        padding: 10px; /* menos padding */
+        gap: 15px; /* espacio entre bloques */
+        top: 0; /* resetea desplazamiento */
+        height: auto; /* que crezca con el contenido */
+    }
+
+    .home-left-card,
+    .home-mid-card,
+    .home-right-container {
+        flex: 1 1 100% !important; 
+        max-width: 100% !important;
+        height: auto !important; /* que no se corte */
+    }
+
+    .home-right-container {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        height: auto;
+    }
+
+    .home-right-card-top,
+    .home-right-card-bot {
+        height: auto;
+        min-height: 150px; /* opcional: tamaño mínimo */
     }
 
 }
