@@ -19,7 +19,6 @@ body {
     height: 100vh;
     background: linear-gradient(#202020 0%, #111111 100%);
     position: relative;
-    overflow: auto;
 }
 
 .toolbar-footer {
@@ -610,6 +609,7 @@ body {
     /*background: linear-gradient(135deg, rgba(180,50,50,0.3), rgba(120,0,0,0.3));*/
     background: transparent;
     position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
@@ -1293,7 +1293,7 @@ body {
 
     .search-bar {
         width: 90%;
-        top: 80px;
+        top: 70px;
         padding: 8px 12px;
     }
 
@@ -1371,5 +1371,4 @@ body {
         height: auto;
         min-height: 150px; /* opcional: tamaño mínimo */
     }
-
 }
