@@ -98,7 +98,7 @@ function fadeOut(callback) {
       if (callback) callback();
     }
   }, 60);
-}
+} //asdaa
 
 function updateIcons() {
   if (isPlaying) {
